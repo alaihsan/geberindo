@@ -18,7 +18,7 @@
 
     <header>
         <div class="container">
-            <nav>
+            <nav style="position:relative;">
                 <div class="logo">
                     <img src="images/logo.png" alt="Geberindo" style="width:48px;height:48px;object-fit:contain;border-radius:8px;"/>
                     <div style="display:flex;flex-direction:column;line-height:1;">
@@ -34,25 +34,20 @@
                     <i class="fa-solid fa-bars"></i>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="index.html" data-i18n="nav.beranda">Beranda</a></li>
-                    <li><a href="tentang.html" data-i18n="nav.tentang">Tentang Kami</a></li>
-                    <li><a href="layanan.html" data-i18n="nav.layanan">Layanan</a></li>
-                    <li><a href="produk.html" data-i18n="nav.produk">Produk</a></li>
-                    <li><a href="klien.html" data-i18n="nav.klien">Klien</a></li>
-                    <li><a href="kontak.html" data-i18n="nav.kontak">Kontak</a></li>
+                    <li><a href="#home" data-i18n="nav.beranda">Beranda</a></li>
+                    <li><a href="#about" data-i18n="nav.tentang">Tentang Kami</a></li>
+                    <li><a href="#services" data-i18n="nav.layanan">Layanan</a></li>
+                    <li><a href="#products" data-i18n="nav.produk">Produk</a></li>
+                    <li><a href="#clients" data-i18n="nav.klien">Klien</a></li>
+                    <li><a href="#contact" data-i18n="nav.kontak">Kontak</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <section id="hero">
-        <div class="container hero-content">
-            <h1 data-i18n="hero.title">Your Reliable Partner for <br><span style="color: var(--accent-green);">Sustainable Business</span></h1>
-            <p data-i18n="hero.subtitle">Mitra terpercaya dalam penyediaan barang dan jasa. Kami menghadirkan produk berkualitas serta layanan profesional untuk keberhasilan operasional Anda.</p>
-            <a href="kontak.html" class="btn btn-primary" data-i18n="btn.contact">Hubungi Kami</a>
-            <a href="produk.html" class="btn btn-secondary" style="margin-left: 10px;" data-i18n="btn.products">Lihat Produk</a>
-        </div>
-    </section>
+    <main id="app-content">
+        <!-- Content akan di-render di sini via JS -->
+    </main>
 
 
 
@@ -67,9 +62,6 @@
     <footer>
         <div class="container">
             <div class="footer-grid">
-    <div id="preloader" class="preloader">
-        <div class="spinner">GAS</div>
-    </div>
                 <div class="footer-info">
                     <h3 data-i18n="footer.company">PT Geberindo Antar Sukses</h3>
                     <p><i class="fa-solid fa-location-dot"></i> <span data-i18n="footer.address">Gedung Menara 165, Lantai 17 Unit A<br>Jl. TB Simatupang Kav-1, Jakarta Selatan 12560</span></p>
@@ -82,11 +74,11 @@
                 </div>
                 <div class="footer-info">
                     <h3 data-i18n="footer.quickLinks">Tautan Cepat</h3>
-                    <p><a href="tentang.html" style="color: #ddd; text-decoration: none;" data-i18n="nav.tentang">Tentang Kami</a></p>
-                    <p><a href="layanan.html" style="color: #ddd; text-decoration: none;" data-i18n="nav.layanan">Layanan</a></p>
-                    <p><a href="produk.html" style="color: #ddd; text-decoration: none;" data-i18n="nav.produk">Produk</a></p>
-                    <p><a href="klien.html" style="color: #ddd; text-decoration: none;" data-i18n="nav.klien">Klien</a></p>
-                    <p><a href="kontak.html" style="color: #ddd; text-decoration: none;" data-i18n="nav.kontak">Kontak</a></p>
+                    <p><a href="#home" style="color: #ddd; text-decoration: none;" data-i18n="nav.beranda">Beranda</a></p>
+                    <p><a href="#about" style="color: #ddd; text-decoration: none;" data-i18n="nav.tentang">Tentang Kami</a></p>
+                    <p><a href="#services" style="color: #ddd; text-decoration: none;" data-i18n="nav.layanan">Layanan</a></p>
+                    <p><a href="#products" style="color: #ddd; text-decoration: none;" data-i18n="nav.produk">Produk</a></p>
+                    <p><a href="#contact" style="color: #ddd; text-decoration: none;" data-i18n="nav.kontak">Kontak</a></p>
                 </div>
             </div>
             <div class="copyright">
@@ -95,15 +87,23 @@
         </div>
     </footer>
 
+
     <!-- Mobile bottom navigation (Instagram-like) -->
     <nav class="mobile-bottom-nav" aria-label="Navigasi bawah mobile">
-        <a href="index.html" class="mbn-item" aria-label="Beranda"><i class="fa-solid fa-house"></i><span>Beranda</span></a>
-        <a href="produk.html" class="mbn-item" aria-label="Produk"><i class="fa-solid fa-box"></i><span>Produk</span></a>
-        <a href="layanan.html" class="mbn-item mbn-center" aria-label="Beli"><i class="fa-solid fa-cart-shopping"></i><span>Beli</span></a>
-        <a href="klien.html" class="mbn-item" aria-label="Klien"><i class="fa-solid fa-briefcase"></i><span>Klien</span></a>
-        <a href="kontak.html" class="mbn-item" aria-label="Kontak"><i class="fa-solid fa-phone"></i><span>Kontak</span></a>
+        <a href="#home" class="mbn-item"><i class="fa-solid fa-house"></i><span data-i18n="nav.beranda">Beranda</span></a>
+        <a href="#products" class="mbn-item"><i class="fa-solid fa-box"></i><span data-i18n="nav.produk">Produk</span></a>
+        <a href="#services" class="mbn-item mbn-center"><i class="fa-solid fa-cart-shopping"></i><span data-i18n="btn.beli">Beli</span></a>
+        <a href="#clients" class="mbn-item"><i class="fa-solid fa-briefcase"></i><span data-i18n="nav.klien">Klien</span></a>
+        <a href="#contact" class="mbn-item"><i class="fa-solid fa-phone"></i><span data-i18n="nav.kontak">Kontak</span></a>
     </nav>
 
+    <div id="preloader" class="preloader">
+        <div class="spinner">GAS</div>
+    </div>
+
+    <script src="js/spa.js"></script>
     <script src="js/main.js"></script>
+</body>
+</html>
 </body>
 </html>
