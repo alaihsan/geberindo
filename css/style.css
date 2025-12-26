@@ -121,7 +121,17 @@ nav {
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 30px;
+    gap: 20px; /* Reduced gap */
+    align-items: center; /* Align items vertically */
+}
+
+/* ... existing styles ... */
+
+/* Language switch - now part of nav-links */
+.lang-switch { 
+    display:flex; 
+    gap:8px; 
+    align-items:center;
 }
 
 .nav-links a {
@@ -480,51 +490,82 @@ footer {
 }
 
 /* --- RESPONSIVE --- */
-@media (max-width: 992px) {
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
+
+/* Default state for mobile nav is hidden */
+.mobile-bottom-nav {
+    display: none;
 }
 
-@media (max-width: 768px) {
+/* Tablet view: 768px - 1024px */
+/* This is the hamburger menu view */
+@media (max-width: 1024px) {
     .nav-links {
-        display: none; /* Hide for now, JS will handle toggle */
+        display: none;
         flex-direction: column;
         position: absolute;
-        top: 80px;
+        top: 80px; /* Height of the header */
         left: 0;
         width: 100%;
         background: var(--white);
         padding: 20px;
         box-shadow: var(--shadow);
+        align-items: center; /* Center items in dropdown */
     }
-    .nav-links.active { display: flex; }
-    .hamburger { display: block; }
-    .hero-content h1 { font-size: 2rem; }
-    .about-grid { grid-template-columns: 1fr; }
+    .nav-links.active {
+        display: flex;
+    }
+    .hamburger {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .lang-switch {
+        padding: 10px 0;
+        justify-content: center;
+    }
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
 }
 
-/* --- Mobile Bottom Navigation (Instagram-like, always visible) --- */
-.mobile-bottom-nav {
-    display: none;
-}
+/* Smartphone view: max-width 767px */
+/* This view hides the header nav and shows the bottom nav */
+@media (max-width: 767px) {
+    body {
+        padding-bottom: 80px; /* Space for the bottom nav */
+    }
 
-/* Tampil di layar kecil */
-@media (max-width: 768px) {
-    body { padding-bottom: 80px; }
+    /* Hide header navigation elements */
+    header .nav-links,
+    header .hamburger {
+        display: none !important;
+    }
+    
+    /* Ensure the logo isn't affected if it's within a flex container that gets hidden */
+    header nav {
+        justify-content: center; /* Center the logo */
+    }
+    
+    .logo {
+        flex-grow: 1; /* Allow logo to take space */
+        justify-content: center;
+    }
+
+    /* Show and style the bottom navigation */
     .mobile-bottom-nav {
         display: flex;
-        gap: 0;
         position: fixed;
         left: 0;
         right: 0;
         bottom: 0;
         background: rgba(255,255,255,0.98);
-        padding: 0;
-        border-radius: 0;
         box-shadow: 0 -4px 16px rgba(0,0,0,0.08);
         z-index: 1200;
-        align-items: stretch;
         border-top: 1px solid #eee;
     }
     .mobile-bottom-nav .mbn-item {
@@ -538,9 +579,6 @@ footer {
         color: #666;
         text-decoration: none;
         font-size: 11px;
-        transition: all 0.25s ease;
-        border-radius: 0;
-        min-width: unset;
     }
     .mobile-bottom-nav .mbn-item i {
         font-size: 20px;
@@ -553,67 +591,9 @@ footer {
         background: rgba(46,125,50,0.1);
         color: var(--primary-green);
     }
-    .mobile-bottom-nav .mbn-item.mbn-center {
-        transform: none;
-        background: transparent;
-        color: #666;
-    }
-    .mobile-bottom-nav .mbn-item.mbn-center i {
-        color: var(--primary-green);
-    }
-}
 
-/* Header scrolled */
-.header-scrolled {
-    box-shadow: 0 8px 24px rgba(0,0,0,0.12) !important;
-    background: rgba(255,255,255,0.98) !important;
-    backdrop-filter: blur(4px);
-}
-
-/* logo img inside header */
-.logo img { display: inline-block; vertical-align: middle; }
-
-/* Language switch - top-right desktop, top-center mobile, tidak menimpa menu */
-.lang-switch { 
-    display:flex; gap:8px; align-items:center;
-    position: absolute;
-    right: 80px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 100;
-}
-.lang-btn {
-    background: transparent;
-    border: 1.5px solid var(--primary-green);
-    padding: 6px 10px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 600;
-    color: var(--primary-green);
-    font-size: 12px;
-    transition: all 0.25s ease;
-}
-.lang-btn:hover { 
-    background: rgba(46,125,50,0.08);
-}
-.lang-btn[data-active="true"], .lang-btn.active {
-    background: var(--primary-green);
-    color: #fff;
-    border-color: var(--primary-green);
-}
-
-@media (max-width: 768px) {
-    .lang-switch { 
-        position: absolute;
-        right: auto;
-        left: 50%;
-        transform: translateX(-50%) translateY(-50%);
-        top: 50%;
-        gap: 6px;
-    }
-    .lang-btn { 
-        padding: 5px 8px; 
-        font-size: 11px;
+    .hero-content h1 {
+        font-size: 2rem;
     }
 }
 
@@ -622,6 +602,13 @@ footer {
 .floating-btn { width:48px; height:48px; border-radius:12px; display:flex; align-items:center; justify-content:center; box-shadow: 0 8px 20px rgba(0,0,0,0.12); cursor:pointer; background:#fff; color:var(--primary-green); border: none; }
 .floating-btn.whatsapp { background: linear-gradient(135deg,#25D366,#128C7E); color:#fff; }
 .floating-btn.scroll-top { background: #fff; color: var(--primary-green); }
+
+@media (max-width: 767px) {
+    /* Adjust floating button on mobile to not overlap bottom nav */
+    .floating-buttons {
+        bottom: 90px;
+    }
+}
 
 /* Preloader dengan transisi elegan */
 .preloader {
@@ -682,12 +669,3 @@ footer {
 .nav-links a:hover { color: var(--primary-green); background: rgba(102,187,106,0.08); border-radius:8px; }
 .nav-links a.active { background: var(--primary-green); color: #fff; }
 
-/* Mobile: make header compact */
-@media (max-width: 480px) {
-    nav { height:64px; flex-wrap:wrap; position: relative; }
-    .logo img { width:40px; height:40px; }
-    .logo { gap: 8px; }
-    .hamburger { display: none !important; }
-    .nav-links { display: none !important; }
-    .hero-content { padding-top: 40px; }
-}

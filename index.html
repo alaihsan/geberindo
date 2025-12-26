@@ -26,10 +26,6 @@
                         <small style="color:var(--accent-green);font-weight:600;">GAS</small>
                     </div>
                 </div>
-                <div class="lang-switch" aria-hidden="false">
-                    <button class="lang-btn" data-lang="id" onclick="setLang('id')">ID</button>
-                    <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
-                </div>
                 <div class="hamburger" onclick="toggleMenu()">
                     <i class="fa-solid fa-bars"></i>
                 </div>
@@ -40,6 +36,12 @@
                     <li><a href="#products" data-i18n="nav.produk">Produk</a></li>
                     <li><a href="#clients" data-i18n="nav.klien">Klien</a></li>
                     <li><a href="#contact" data-i18n="nav.kontak">Kontak</a></li>
+                    <li>
+                        <div class="lang-switch" aria-hidden="false">
+                            <button class="lang-btn" data-lang="id" onclick="setLang('id')">ID</button>
+                            <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+                        </div>
+                    </li>
                 </ul>
             </nav>
         </div>
