@@ -239,18 +239,43 @@ const pages = {
 };
 
 function renderPage(pageName) {
+    const appContent = document.getElementById('app-content');
     const preloader = document.getElementById('preloader');
-    preloader.style.display = 'flex';
-    
+
+    // 1. Show preloader and start fading out content
+    if (preloader) {
+        preloader.classList.remove('hidden');
+    }
+    if (appContent) {
+        appContent.classList.add('fade-out');
+    }
+
+    // 2. Wait for fade-out, then change content and fade back in
     setTimeout(() => {
-        const appContent = document.getElementById('app-content');
         const content = pages[pageName] || pages['home'];
-        appContent.innerHTML = content;
-        applyTranslations(currentLang);
-        preloader.style.display = 'none';
+        if (appContent) {
+            appContent.innerHTML = content;
+            if(typeof applyTranslations === 'function' && typeof currentLang !== 'undefined'){
+                applyTranslations(currentLang);
+            }
+            
+            // 3. Remove fade-out to trigger fade-in animation
+            appContent.classList.remove('fade-out');
+        }
+
+        // 4. Hide preloader after a short delay to let content start rendering
+        setTimeout(() => {
+            if (preloader) {
+                preloader.classList.add('hidden');
+            }
+        }, 50); 
+
         window.scrollTo(0, 0);
-        closeMenu();
-    }, 300);
+        
+        if (typeof closeMenu === 'function') {
+            closeMenu();
+        }
+    }, 300); // This duration should match the fade-out transition
 }
 
 function router() {
