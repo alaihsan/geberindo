@@ -76,17 +76,17 @@ const pages = {
                 <div class="service-details-grid">
                     <div class="service-detail-card">
                         <i class="fa-solid fa-industry"></i>
-                        <h4 data-i18n="page.services.service1">Pengadaan Barang Industri & Safety Equipment</h4>
-                        <p data-i18n="page.services.service1Text">Menyediakan berbagai produk keselamatan kerja, APD, dan peralatan industri dengan standar nasional & internasional.</p>
+                        <h4 data-i18n="page.services.service1">Pengadaan Barang Industri &amp; Safety Equipment</h4>
+                        <p data-i18n="page.services.service1Text">Menyediakan berbagai produk keselamatan kerja, APD, dan peralatan industri dengan standar nasional &amp; internasional.</p>
                     </div>
                     <div class="service-detail-card">
                         <i class="fa-solid fa-tractor"></i>
-                        <h4 data-i18n="page.services.service2">Perdagangan Alat Perkebunan & Pertanian</h4>
+                        <h4 data-i18n="page.services.service2">Perdagangan Alat Perkebunan &amp; Pertanian</h4>
                         <p data-i18n="page.services.service2Text">Distribusi alat-alat modern untuk mendukung produktivitas di sektor perkebunan dan pertanian.</p>
                     </div>
                     <div class="service-detail-card">
                         <i class="fa-solid fa-comments"></i>
-                        <h4 data-i18n="page.services.service3">Konsultasi & Solusi Pengadaan</h4>
+                        <h4 data-i18n="page.services.service3">Konsultasi &amp; Solusi Pengadaan</h4>
                         <p data-i18n="page.services.service3Text">Membantu klien dalam menentukan kebutuhan dan spesifikasi barang sesuai standar perusahaan dan anggaran.</p>
                     </div>
                 </div>
@@ -138,7 +138,7 @@ const pages = {
                             <ul>
                                 <li data-i18n="page.products.cat3Item1">Pompa Industri</li>
                                 <li data-i18n="page.products.cat3Item2">Motor Listrik</li>
-                                <li data-i18n="page.products.cat3Item3">Pipa & Fitting</li>
+                                <li data-i18n="page.products.cat3Item3">Pipa &amp; Fitting</li>
                                 <li data-i18n="page.products.cat3Item4">Sistem Otomasi</li>
                             </ul>
                         </div>
@@ -162,7 +162,7 @@ const pages = {
                             <li><i class="fa-solid fa-check-circle"></i> <span data-i18n="page.clients.sector2">Pertanian</span></li>
                             <li><i class="fa-solid fa-check-circle"></i> <span data-i18n="page.clients.sector3">Industri Manufaktur</span></li>
                             <li><i class="fa-solid fa-check-circle"></i> <span data-i18n="page.clients.sector4">Konstruksi</span></li>
-                            <li><i class="fa-solid fa-check-circle"></i> <span data-i18n="page.clients.sector5">Energi & Pertambangan</span></li>
+                            <li><i class="fa-solid fa-check-circle"></i> <span data-i18n="page.clients.sector5">Energi &amp; Pertambangan</span></li>
                         </ul>
                     </div>
                     <div class="client-proyek">
@@ -225,10 +225,10 @@ const pages = {
                     </div>
                     <div class="contact-map">
                         <h3 data-i18n="page.contact.message">Kirim Pesan</h3>
-                        <form style="display:flex;flex-direction:column;gap:12px;">
-                            <input type="text" placeholder="Nama Anda" data-i18n-placeholder="page.contact.namePlaceholder" style="padding:10px;border:1px solid #ddd;border-radius:8px;"/>
-                            <input type="email" placeholder="Email Anda" data-i18n-placeholder="page.contact.emailPlaceholder" style="padding:10px;border:1px solid #ddd;border-radius:8px;"/>
-                            <textarea placeholder="Pesan Anda" data-i18n-placeholder="page.contact.messagePlaceholder" rows="4" style="padding:10px;border:1px solid #ddd;border-radius:8px;"></textarea>
+                        <form id="contact-form" style="display:flex;flex-direction:column;gap:12px;">
+                            <input name="name" type="text" placeholder="Nama Anda" data-i18n-placeholder="page.contact.namePlaceholder" style="padding:10px;border:1px solid #ddd;border-radius:8px;"/>
+                            <input name="email" type="email" placeholder="Email Anda" data-i18n-placeholder="page.contact.emailPlaceholder" style="padding:10px;border:1px solid #ddd;border-radius:8px;"/>
+                            <textarea name="message" placeholder="Pesan Anda" data-i18n-placeholder="page.contact.messagePlaceholder" rows="4" style="padding:10px;border:1px solid #ddd;border-radius:8px;"></textarea>
                             <button type="submit" class="btn btn-primary" data-i18n="page.contact.send">Kirim</button>
                         </form>
                     </div>
@@ -259,6 +259,56 @@ function renderPage(pageName) {
                 applyTranslations(currentLang);
             }
             
+            // Add contact form listener if on contact page
+            if (pageName === 'contact') {
+                const contactForm = document.getElementById('contact-form');
+                if (contactForm) {
+                    contactForm.addEventListener('submit', function(event) {
+                        event.preventDefault();
+                        
+                        const contactForm = event.target;
+                        const submitButton = contactForm.querySelector('button[type="submit"]');
+                        
+                        // Remove any existing message
+                        let existingMessage = contactForm.querySelector('.form-message');
+                        if (existingMessage) {
+                            existingMessage.remove();
+                        }
+
+                        // Create and show a "sending" message
+                        const sendingMsg = document.createElement('p');
+                        sendingMsg.className = 'form-message';
+                        sendingMsg.textContent = 'Mempersiapkan aplikasi email Anda...';
+                        sendingMsg.style.marginTop = '10px';
+                        sendingMsg.style.fontWeight = '500';
+                        sendingMsg.style.color = 'var(--primary-color)';
+                        contactForm.appendChild(sendingMsg);
+                        submitButton.disabled = true;
+
+                        // Construct mailto link
+                        const name = contactForm.elements.name.value;
+                        const fromEmail = contactForm.elements.email.value;
+                        const message = contactForm.elements.message.value;
+                        const toEmail = 'info@geberindo.com';
+                        const subject = `Pesan dari ${name} (via Website)`;
+                        const body = `Pengirim: ${name}\nEmail: ${fromEmail}\n\nPesan:\n${message}`;
+                        const mailtoLink = `mailto:${toEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                        
+                        // After a delay, attempt to open mail client and reset the form
+                        setTimeout(() => {
+                            window.location.href = mailtoLink;
+                            
+                            // Reset form state for when the user returns to the tab
+                            contactForm.reset(); 
+                            submitButton.disabled = false;
+                            if(contactForm.querySelector('.form-message')) {
+                                contactForm.querySelector('.form-message').remove();
+                            }
+                        }, 800);
+                    });
+                }
+            }
+
             // 3. Remove fade-out to trigger fade-in animation
             appContent.classList.remove('fade-out');
         }
