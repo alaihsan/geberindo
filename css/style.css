@@ -1,11 +1,15 @@
 /* --- CSS VARIABLES & RESET --- */
 :root {
-    --primary-green: #2E7D32; /* Hijau Segar - Perkebunan */
-    --accent-green: #66BB6A; /* Hijau Aksen - Segar & Modern */
-    --dark-text: #333333;
-    --light-bg: #f4f9f4;
+    --primary-color: #5bb7d6; /* New Blue */
+    --accent-color: #8fd1e8;  /* New Light Blue */
+    --base-bg: #ffffff;
+    --surface-bg: #f8f9fa; /* A neutral light gray */
+    --text-primary: #212121;
+    --text-secondary: #5f6368;
+    --text-on-dark: #e8eaed;
+    --dark-surface: #202124; /* Darker surface for footer */
     --white: #ffffff;
-    --shadow: 0 5px 15px rgba(0,0,0,0.1);
+    --shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 * {
@@ -20,9 +24,9 @@ html {
 }
 
 body {
-    color: var(--dark-text);
+    color: var(--text-primary);
     line-height: 1.6;
-    background-color: var(--white);
+    background-color: var(--base-bg);
 }
 
 /* --- UTILITIES --- */
@@ -50,31 +54,31 @@ body {
 }
 
 .btn-primary {
-    background-color: var(--primary-green);
+    background-color: var(--primary-color);
     color: var(--white);
-    border: 2px solid var(--primary-green);
+    border: 2px solid var(--primary-color);
 }
 
 .btn-primary:hover {
     background-color: var(--white);
-    color: var(--primary-green);
+    color: var(--primary-color);
 }
 
 .btn-secondary {
     background-color: var(--white);
-    color: var(--accent-green);
-    border: 2px solid var(--accent-green);
+    color: var(--accent-color);
+    border: 2px solid var(--accent-color);
 }
 
 .btn-secondary:hover {
-    background-color: var(--accent-green);
+    background-color: var(--accent-color);
     color: var(--white);
 }
 
 h2.section-title {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: var(--primary-green);
+    color: var(--primary-color);
     position: relative;
     display: inline-block;
 }
@@ -84,14 +88,14 @@ h2.section-title::after {
     display: block;
     width: 50%;
     height: 4px;
-    background: var(--accent-green);
+    background: var(--accent-color);
     margin: 10px auto 0;
     border-radius: 2px;
 }
 
 /* --- HEADER & NAV --- */
 header {
-    background: var(--white);
+    background: var(--base-bg);
     box-shadow: var(--shadow);
     position: fixed;
     width: 100%;
@@ -110,13 +114,13 @@ nav {
 .logo {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--primary-green);
+    color: var(--primary-color);
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.logo span { color: var(--accent-green); }
+.logo span { color: var(--accent-color); }
 
 .nav-links {
     display: flex;
@@ -128,25 +132,45 @@ nav {
 /* ... existing styles ... */
 
 /* Language switch - now part of nav-links */
-.lang-switch { 
-    display:flex; 
-    gap:8px; 
+.lang-switch {
+    display:flex;
+    gap:8px;
     align-items:center;
+}
+
+.lang-btn {
+    background: transparent;
+    border: 1.5px solid var(--primary-color);
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 12px;
+    transition: all 0.25s ease;
+}
+.lang-btn:hover {
+    background: rgba(91, 183, 214, 0.08);
+}
+.lang-btn[data-active="true"], .lang-btn.active {
+    background: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
 }
 
 .nav-links a {
     text-decoration: none;
-    color: var(--dark-text);
+    color: var(--text-primary);
     font-weight: 500;
     transition: color 0.3s;
 }
 
 .nav-links a:hover {
-    color: var(--primary-green);
+    color: var(--primary-color);
 }
 
 /* Mobile Menu */
-.hamburger { display: none; cursor: pointer; font-size: 1.5rem; }
+.hamburger { display: none; cursor: pointer; font-size: 1.5rem; color: var(--text-primary); }
 
 /* --- HERO SECTION --- */
 #hero {
@@ -178,7 +202,7 @@ nav {
 
 /* --- ABOUT PAGE --- */
 #about-page {
-    background-color: var(--white);
+    background-color: var(--base-bg);
 }
 
 .about-main-text {
@@ -186,17 +210,18 @@ nav {
     margin: 0 auto 50px auto;
     text-align: center;
     font-size: 1.1rem;
+    color: var(--text-secondary);
 }
 
 .vision-container, .mission-container {
-    background: var(--light-bg);
+    background: var(--surface-bg);
     padding: 30px;
     border-radius: 15px;
     margin-bottom: 30px;
 }
 
 .vision-container h3, .mission-container h3, .values-container h3 {
-    color: var(--primary-green);
+    color: var(--primary-color);
     margin-bottom: 20px;
     display: flex;
     align-items: center;
@@ -217,7 +242,7 @@ nav {
 }
 
 .mission-container li i {
-    color: var(--accent-green);
+    color: var(--accent-color);
     margin-top: 5px;
 }
 
@@ -242,7 +267,7 @@ nav {
 }
 
 .value-card {
-    background: var(--white);
+    background: var(--surface-bg);
     padding: 30px;
     border-radius: 15px;
     text-align: center;
@@ -254,15 +279,15 @@ nav {
 
 .value-card i {
     font-size: 3rem;
-    color: var(--accent-green);
+    color: var(--accent-color);
     margin-bottom: 20px;
 }
 
-.value-card h3, .value-card h4 { margin-bottom: 10px; color: var(--primary-green); }
+.value-card h3, .value-card h4 { margin-bottom: 10px; color: var(--primary-color); }
 
 /* --- SERVICES PAGE --- */
 #services-page {
-    background-color: var(--light-bg);
+    background-color: var(--surface-bg);
 }
 
 .service-details-grid {
@@ -273,12 +298,12 @@ nav {
 }
 
 .service-detail-card {
-    background: var(--white);
+    background: var(--base-bg);
     padding: 30px;
     border-radius: 15px;
     text-align: center;
     box-shadow: var(--shadow);
-    border-top: 5px solid var(--accent-green);
+    border-top: 5px solid var(--accent-color);
     transition: transform 0.3s ease;
 }
 
@@ -288,18 +313,18 @@ nav {
 
 .service-detail-card i {
     font-size: 3rem;
-    color: var(--primary-green);
+    color: var(--primary-color);
     margin-bottom: 20px;
 }
 
 .service-detail-card h4 {
-    color: var(--dark-text);
+    color: var(--text-primary);
     margin-bottom: 15px;
     font-size: 1.25rem;
 }
 
 /* --- PRODUCTS (SERVICES) SECTION --- */
-#services { background-color: var(--white); }
+#services { background-color: var(--base-bg); }
 
 .service-container {
     display: flex;
@@ -311,15 +336,15 @@ nav {
 
 .service-box {
     flex-basis: 300px;
-    background: var(--white);
-    border: 1px solid #eee;
+    background: var(--surface-bg);
+    border: 1px solid #e0e0e0; /* Replaced #eee */
     border-radius: 10px;
     overflow: hidden;
     box-shadow: var(--shadow);
 }
 
 .service-header {
-    background: var(--primary-green);
+    background: var(--primary-color);
     color: var(--white);
     padding: 20px;
     text-align: center;
@@ -329,10 +354,10 @@ nav {
 
 .service-body { padding: 20px; }
 .service-body ul { list-style: none; padding-left: 0; }
-.service-body li { 
-    margin-bottom: 10px; 
-    padding-left: 20px; 
-    position: relative; 
+.service-body li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
 }
 .service-body li::before {
     content: '\f00c';
@@ -340,12 +365,12 @@ nav {
     font-weight: 900;
     position: absolute;
     left: 0;
-    color: var(--accent-green);
+    color: var(--accent-color);
 }
 
 /* --- KLIEN / PROJECTS SECTION --- */
 #clients {
-    background-color: var(--light-bg);
+    background-color: var(--surface-bg);
 }
 
 .clients-grid {
@@ -356,16 +381,16 @@ nav {
 }
 
 .client-sektor, .client-proyek {
-    background: var(--white);
+    background: var(--base-bg);
     padding: 30px;
     border-radius: 15px;
     box-shadow: var(--shadow);
 }
 
 .client-sektor h3, .client-proyek h3 {
-    color: var(--primary-green);
+    color: var(--primary-color);
     margin-bottom: 20px;
-    border-bottom: 2px solid var(--accent-green);
+    border-bottom: 2px solid var(--accent-color);
     padding-bottom: 10px;
 }
 
@@ -383,13 +408,13 @@ nav {
 }
 
 .client-sektor li i {
-    color: var(--accent-green);
+    color: var(--accent-color);
     font-size: 1.5rem;
 }
 
 .proyek-item {
     margin-bottom: 25px;
-    border-left: 4px solid var(--accent-green);
+    border-left: 4px solid var(--accent-color);
     padding-left: 20px;
 }
 
@@ -398,13 +423,13 @@ nav {
 }
 
 .proyek-item h4 {
-    color: var(--primary-green);
+    color: var(--primary-color);
     margin-bottom: 5px;
 }
 
 /* --- CONTACT PAGE --- */
 #contact-page {
-    background-color: var(--light-bg);
+    background-color: var(--surface-bg);
 }
 
 .contact-grid {
@@ -416,16 +441,16 @@ nav {
 }
 
 .contact-details, .contact-map {
-    background: var(--white);
+    background: var(--base-bg);
     padding: 30px;
     border-radius: 15px;
     box-shadow: var(--shadow);
 }
 
 .contact-details h3, .contact-map h3 {
-    color: var(--primary-green);
+    color: var(--primary-color);
     margin-bottom: 25px;
-    border-bottom: 2px solid var(--accent-green);
+    border-bottom: 2px solid var(--accent-color);
     padding-bottom: 10px;
 }
 
@@ -437,7 +462,7 @@ nav {
 }
 
 .contact-item i {
-    color: var(--accent-green);
+    color: var(--accent-color);
     font-size: 1.5rem;
     margin-top: 5px;
     width: 25px;
@@ -450,7 +475,7 @@ nav {
 }
 
 .contact-item a {
-    color: var(--primary-green);
+    color: var(--primary-color);
     text-decoration: none;
     font-weight: 600;
 }
@@ -466,8 +491,8 @@ nav {
 
 /* --- FOOTER --- */
 footer {
-    background: #1a1a1a;
-    color: #ddd;
+    background: var(--dark-surface);
+    color: var(--text-on-dark);
     padding: 50px 0 20px;
 }
 
@@ -480,13 +505,14 @@ footer {
 
 .footer-info h3 { color: var(--white); margin-bottom: 20px; }
 .footer-info p { margin-bottom: 10px; display: flex; gap: 10px; }
-.footer-info i { color: var(--accent-green); margin-top: 5px; }
+.footer-info i { color: var(--accent-color); margin-top: 5px; }
 
 .copyright {
     text-align: center;
-    border-top: 1px solid #333;
+    border-top: 1px solid #343a40; /* Replaced #333 */
     padding-top: 20px;
     font-size: 0.9rem;
+    color: var(--text-secondary);
 }
 
 /* --- RESPONSIVE --- */
@@ -500,19 +526,29 @@ footer {
 /* This is the hamburger menu view */
 @media (max-width: 1024px) {
     .nav-links {
-        display: none;
+        display: flex; /* Keep it as a flex container */
         flex-direction: column;
         position: absolute;
         top: 80px; /* Height of the header */
         left: 0;
         width: 100%;
-        background: var(--white);
+        background: var(--base-bg);
         padding: 20px;
         box-shadow: var(--shadow);
         align-items: center; /* Center items in dropdown */
+
+        /* Fade and slide transition */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        pointer-events: none; /* Prevent interaction when hidden */
     }
     .nav-links.active {
-        display: flex;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto; /* Allow interaction when visible */
     }
     .hamburger {
         display: block;
@@ -545,12 +581,12 @@ footer {
     header .hamburger {
         display: none !important;
     }
-    
+
     /* Ensure the logo isn't affected if it's within a flex container that gets hidden */
     header nav {
         justify-content: center; /* Center the logo */
     }
-    
+
     .logo {
         flex-grow: 1; /* Allow logo to take space */
         justify-content: center;
@@ -566,7 +602,7 @@ footer {
         background: rgba(255,255,255,0.98);
         box-shadow: 0 -4px 16px rgba(0,0,0,0.08);
         z-index: 1200;
-        border-top: 1px solid #eee;
+        border-top: 1px solid #e0e0e0; /* Replaced #eee */
     }
     .mobile-bottom-nav .mbn-item {
         display: flex;
@@ -576,20 +612,20 @@ footer {
         gap: 4px;
         padding: 8px 0;
         flex: 1;
-        color: #666;
+        color: var(--text-secondary); /* Replaced #666 */
         text-decoration: none;
         font-size: 11px;
     }
     .mobile-bottom-nav .mbn-item i {
         font-size: 20px;
-        color: var(--primary-green);
+        color: var(--primary-color);
     }
     .mobile-bottom-nav .mbn-item:hover {
-        background: rgba(46,125,50,0.05);
+        background: rgba(91, 183, 214, 0.05);
     }
     .mobile-bottom-nav .mbn-item.active {
-        background: rgba(46,125,50,0.1);
-        color: var(--primary-green);
+        background: rgba(91, 183, 214, 0.1);
+        color: var(--primary-color);
     }
 
     .hero-content h1 {
@@ -599,9 +635,9 @@ footer {
 
 /* Floating buttons (whatsapp & scroll-top) */
 .floating-buttons { position: fixed; right: 20px; bottom: 20px; display:flex; flex-direction:column; gap:12px; z-index:1300; }
-.floating-btn { width:48px; height:48px; border-radius:12px; display:flex; align-items:center; justify-content:center; box-shadow: 0 8px 20px rgba(0,0,0,0.12); cursor:pointer; background:#fff; color:var(--primary-green); border: none; }
-.floating-btn.whatsapp { background: linear-gradient(135deg,#25D366,#128C7E); color:#fff; }
-.floating-btn.scroll-top { background: #fff; color: var(--primary-green); }
+.floating-btn { width:48px; height:48px; border-radius:12px; display:flex; align-items:center; justify-content:center; box-shadow: 0 8px 20px rgba(0,0,0,0.12); cursor:pointer; background:var(--base-bg); color:var(--primary-color); border: none; }
+.floating-btn.whatsapp { background: linear-gradient(135deg,#25D366,#128C7E); color:var(--white); }
+.floating-btn.scroll-top { background: var(--base-bg); color: var(--primary-color); }
 
 @media (max-width: 767px) {
     /* Adjust floating button on mobile to not overlap bottom nav */
@@ -614,7 +650,7 @@ footer {
 .preloader {
     position: fixed;
     inset: 0;
-    background: linear-gradient(135deg, rgba(46,125,50,0.95), rgba(102,187,106,0.95));
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
     display:flex;
     align-items:center;
     justify-content:center;
@@ -623,19 +659,19 @@ footer {
     visibility: visible;
     transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1), visibility 0.6s;
 }
-.preloader.hidden { 
-    opacity: 0; 
-    visibility: hidden; 
+.preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
 }
-.preloader .spinner { 
-    width: 80px; 
-    height: 80px; 
-    border-radius: 16px; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
+.preloader .spinner {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: rgba(255,255,255,0.15);
-    color: #fff; 
+    color: var(--white);
     font-weight: 700;
     font-size: 32px;
     box-shadow: 0 12px 40px rgba(0,0,0,0.2);
@@ -666,6 +702,5 @@ footer {
 
 /* Active / hover nav styles */
 .nav-links a { transition: color 0.25s ease, background 0.25s ease, border-radius 6px; padding:6px 8px; }
-.nav-links a:hover { color: var(--primary-green); background: rgba(102,187,106,0.08); border-radius:8px; }
-.nav-links a.active { background: var(--primary-green); color: #fff; }
-
+.nav-links a:hover { color: var(--primary-color); background: rgba(143, 209, 232, 0.08); }
+.nav-links a.active { background: var(--primary-color); color: var(--white); }
