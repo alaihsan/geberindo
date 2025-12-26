@@ -26,16 +26,20 @@
                         <small style="color:var(--accent-green);font-weight:600;">GAS</small>
                     </div>
                 </div>
+                <div class="lang-switch" aria-hidden="false">
+                    <button class="lang-btn" data-lang="id" onclick="setLang('id')">ID</button>
+                    <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+                </div>
                 <div class="hamburger" onclick="toggleMenu()">
                     <i class="fa-solid fa-bars"></i>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="index.html">Beranda</a></li>
-                    <li><a href="tentang.html">Tentang Kami</a></li>
-                    <li><a href="layanan.html">Layanan</a></li>
-                    <li><a href="produk.html">Produk</a></li>
-                    <li><a href="klien.html">Klien</a></li>
-                    <li><a href="kontak.html">Kontak</a></li>
+                    <li><a href="index.html" data-i18n="nav.beranda">Beranda</a></li>
+                    <li><a href="tentang.html" data-i18n="nav.tentang">Tentang Kami</a></li>
+                    <li><a href="layanan.html" data-i18n="nav.layanan">Layanan</a></li>
+                    <li><a href="produk.html" data-i18n="nav.produk">Produk</a></li>
+                    <li><a href="klien.html" data-i18n="nav.klien">Klien</a></li>
+                    <li><a href="kontak.html" data-i18n="nav.kontak">Kontak</a></li>
                 </ul>
             </nav>
         </div>
@@ -43,10 +47,10 @@
 
     <section id="hero">
         <div class="container hero-content">
-            <h1>Your Reliable Partner for <br><span style="color: var(--accent-green);">Sustainable Business</span></h1>
-            <p>Mitra terpercaya dalam penyediaan barang dan jasa. Kami menghadirkan produk berkualitas serta layanan profesional untuk keberhasilan operasional Anda.</p>
-            <a href="kontak.html" class="btn btn-primary">Hubungi Kami</a>
-            <a href="produk.html" class="btn btn-secondary" style="margin-left: 10px;">Lihat Produk</a>
+            <h1 data-i18n="hero.title">Your Reliable Partner for <br><span style="color: var(--accent-green);">Sustainable Business</span></h1>
+            <p data-i18n="hero.subtitle">Mitra terpercaya dalam penyediaan barang dan jasa. Kami menghadirkan produk berkualitas serta layanan profesional untuk keberhasilan operasional Anda.</p>
+            <a href="kontak.html" class="btn btn-primary" data-i18n="btn.contact">Hubungi Kami</a>
+            <a href="produk.html" class="btn btn-secondary" style="margin-left: 10px;" data-i18n="btn.products">Lihat Produk</a>
         </div>
     </section>
 
@@ -63,23 +67,26 @@
     <footer>
         <div class="container">
             <div class="footer-grid">
+    <div id="preloader" class="preloader">
+        <div class="spinner">GAS</div>
+    </div>
                 <div class="footer-info">
-                    <h3>PT Geberindo Antar Sukses</h3>
-                    <p><i class="fa-solid fa-location-dot"></i> Gedung Menara 165, Lantai 17 Unit A<br>Jl. TB Simatupang Kav-1, Jakarta Selatan 12560</p>
+                    <h3 data-i18n="footer.company">PT Geberindo Antar Sukses</h3>
+                    <p><i class="fa-solid fa-location-dot"></i> <span data-i18n="footer.address">Gedung Menara 165, Lantai 17 Unit A<br>Jl. TB Simatupang Kav-1, Jakarta Selatan 12560</span></p>
                 </div>
                 <div class="footer-info">
-                    <h3>Kontak</h3>
-                    <p><i class="fa-solid fa-phone"></i> 021-38820017 / 0813 8080 810 (WA)</p>
-                    <p><i class="fa-solid fa-envelope"></i> info@geberindo.com</p>
-                    <p><i class="fa-solid fa-clock"></i> Senin - Jumat: 08.00-17.00 WIB</p>
+                    <h3 data-i18n="footer.contactTitle">Kontak</h3>
+                    <p><i class="fa-solid fa-phone"></i> <span data-i18n="footer.phone">021-38820017 / 0813 8080 810 (WA)</span></p>
+                    <p><i class="fa-solid fa-envelope"></i> <span data-i18n="footer.email">info@geberindo.com</span></p>
+                    <p><i class="fa-solid fa-clock"></i> <span data-i18n="footer.hours">Senin - Jumat: 08.00-17.00 WIB</span></p>
                 </div>
                 <div class="footer-info">
-                    <h3>Tautan Cepat</h3>
-                    <p><a href="tentang.html" style="color: #ddd; text-decoration: none;">Tentang Kami</a></p>
-                    <p><a href="layanan.html" style="color: #ddd; text-decoration: none;">Layanan</a></p>
-                    <p><a href="produk.html" style="color: #ddd; text-decoration: none;">Produk</a></p>
-                    <p><a href="klien.html" style="color: #ddd; text-decoration: none;">Klien</a></p>
-                    <p><a href="kontak.html" style="color: #ddd; text-decoration: none;">Kontak</a></p>
+                    <h3 data-i18n="footer.quickLinks">Tautan Cepat</h3>
+                    <p><a href="tentang.html" style="color: #ddd; text-decoration: none;" data-i18n="nav.tentang">Tentang Kami</a></p>
+                    <p><a href="layanan.html" style="color: #ddd; text-decoration: none;" data-i18n="nav.layanan">Layanan</a></p>
+                    <p><a href="produk.html" style="color: #ddd; text-decoration: none;" data-i18n="nav.produk">Produk</a></p>
+                    <p><a href="klien.html" style="color: #ddd; text-decoration: none;" data-i18n="nav.klien">Klien</a></p>
+                    <p><a href="kontak.html" style="color: #ddd; text-decoration: none;" data-i18n="nav.kontak">Kontak</a></p>
                 </div>
             </div>
             <div class="copyright">

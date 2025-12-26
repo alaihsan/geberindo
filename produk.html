@@ -29,13 +29,17 @@
                 <div class="hamburger" onclick="toggleMenu()">
                     <i class="fa-solid fa-bars"></i>
                 </div>
+                <div class="lang-switch" aria-hidden="false">
+                    <button class="lang-btn" data-lang="id" onclick="setLang('id')">ID</button>
+                    <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+                </div>
                 <ul class="nav-links">
-                    <li><a href="index.html">Beranda</a></li>
-                    <li><a href="tentang.html">Tentang Kami</a></li>
-                    <li><a href="layanan.html">Layanan</a></li>
-                    <li><a href="produk.html">Produk</a></li>
-                    <li><a href="klien.html">Klien</a></li>
-                    <li><a href="kontak.html">Kontak</a></li>
+                    <li><a href="index.html" data-i18n="nav.beranda">Beranda</a></li>
+                    <li><a href="tentang.html" data-i18n="nav.tentang">Tentang Kami</a></li>
+                    <li><a href="layanan.html" data-i18n="nav.layanan">Layanan</a></li>
+                    <li><a href="produk.html" data-i18n="nav.produk">Produk</a></li>
+                    <li><a href="klien.html" data-i18n="nav.klien">Klien</a></li>
+                    <li><a href="kontak.html" data-i18n="nav.kontak">Kontak</a></li>
                 </ul>
             </nav>
         </div>
@@ -138,5 +142,8 @@
     </nav>
 
     <script src="js/main.js"></script>
+    <div id="preloader" class="preloader">
+        <div class="spinner">GAS</div>
+    </div>
 </body>
 </html>
