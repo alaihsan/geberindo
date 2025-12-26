@@ -6,9 +6,12 @@
     <title>Klien & Proyek - PT Geberindo Antar Sukses</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="icon" href="images/logo.png">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -17,8 +20,11 @@
         <div class="container">
             <nav>
                 <div class="logo">
-                    <i class="fa-solid fa-leaf"></i>
-                    GEBERINDO <span>GAS</span>
+                    <img src="images/logo.png" alt="Geberindo" style="width:48px;height:48px;object-fit:contain;border-radius:8px;"/>
+                    <div style="display:flex;flex-direction:column;line-height:1;">
+                        <strong style="color:var(--primary-green);">GEBERINDO</strong>
+                        <small style="color:var(--accent-green);font-weight:600;">GAS</small>
+                    </div>
                 </div>
                 <div class="hamburger" onclick="toggleMenu()">
                     <i class="fa-solid fa-bars"></i>
@@ -91,6 +97,15 @@
             </div>
         </div>
     </footer>
+
+    <!-- Mobile bottom navigation (Instagram-like) -->
+    <nav class="mobile-bottom-nav" aria-label="Navigasi bawah mobile">
+        <a href="index.html" class="mbn-item"><i class="fa-solid fa-house"></i><span>Beranda</span></a>
+        <a href="produk.html" class="mbn-item"><i class="fa-solid fa-box"></i><span>Produk</span></a>
+        <a href="layanan.html" class="mbn-item mbn-center"><i class="fa-solid fa-cart-shopping"></i><span>Beli</span></a>
+        <a href="klien.html" class="mbn-item"><i class="fa-solid fa-briefcase"></i><span>Klien</span></a>
+        <a href="kontak.html" class="mbn-item"><i class="fa-solid fa-phone"></i><span>Kontak</span></a>
+    </nav>
 
     <script src="js/main.js"></script>
 </body>

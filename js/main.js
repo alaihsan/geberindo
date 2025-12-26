@@ -57,3 +57,31 @@ document.addEventListener('DOMContentLoaded', function() {
     setupMenu();
     setupScrollAnimations();
 });
+
+// Additional interactions: header shadow on scroll and mobile-bottom-nav active item
+document.addEventListener('DOMContentLoaded', function() {
+    const header = document.querySelector('header');
+    const bottomNav = document.querySelectorAll('.mobile-bottom-nav .mbn-item');
+
+    function onScroll() {
+        if (!header) return;
+        if (window.scrollY > 10) header.classList.add('header-scrolled');
+        else header.classList.remove('header-scrolled');
+    }
+
+    onScroll();
+    window.addEventListener('scroll', onScroll);
+
+    // Highlight bottom nav based on path
+    if (bottomNav.length) {
+        const path = window.location.pathname.split('/').pop() || 'index.html';
+        bottomNav.forEach(a => {
+            try {
+                const href = a.getAttribute('href');
+                if (href && (href === path || (href === 'index.html' && path === '')) ) {
+                    a.classList.add('active');
+                }
+            } catch(e){}
+        });
+    }
+});
