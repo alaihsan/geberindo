@@ -60,28 +60,50 @@
     <footer>
         <div class="container">
             <div class="footer-grid">
+                <!-- Company Info -->
                 <div class="footer-info">
-                    <h3 data-i18n="footer.company">PT Geberindo Antar Sukses</h3>
-                    <p><i class="fa-solid fa-location-dot"></i> <span data-i18n="footer.address">Gedung Menara 165, Lantai 17 Unit A<br>Jl. TB Simatupang Kav-1, Jakarta Selatan 12560</span></p>
+                    <h3>PT Geberindo Antar Sukses</h3>
+                    <p class="company-bio" style="color: var(--text-secondary);">Mitra terpercaya dalam penyediaan barang dan jasa berkualitas untuk keberhasilan operasional Anda.</p>
+                    <div class="footer-contact-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p data-i18n="footer.address">Gedung Menara 165, Lt. 17 Unit A<br>Jl. TB Simatupang Kav-1, Jakarta Selatan</p>
+                    </div>
                 </div>
-                <div class="footer-info">
-                    <h3 data-i18n="footer.contactTitle">Kontak</h3>
-                    <p><i class="fa-solid fa-phone"></i> <span data-i18n="footer.phone">021-38820017 / 0813 8080 810 (WA)</span></p>
-                    <p><i class="fa-solid fa-envelope"></i> <span data-i18n="footer.email">info@geberindo.com</span></p>
-                    <p><i class="fa-solid fa-clock"></i> <span data-i18n="footer.hours">Senin - Jumat: 08.00-17.00 WIB</span></p>
-                </div>
+                <!-- Quick Links -->
                 <div class="footer-info">
                     <h3 data-i18n="footer.quickLinks">Tautan Cepat</h3>
-                    <p><a href="#home" style="color: #ddd; text-decoration: none;" data-i18n="nav.beranda">Beranda</a></p>
-                    <p><a href="#about" style="color: #ddd; text-decoration: none;" data-i18n="nav.tentang">Tentang Kami</a></p>
-                    <p><a href="#services" style="color: #ddd; text-decoration: none;" data-i18n="nav.layanan">Layanan</a></p>
-                    <p><a href="#products" style="color: #ddd; text-decoration: none;" data-i18n="nav.produk">Produk</a></p>
-                    <p><a href="#contact" style="color: #ddd; text-decoration: none;" data-i18n="nav.kontak">Kontak</a></p>
+                    <ul>
+                        <li><a href="#home" data-i18n="nav.beranda">Beranda</a></li>
+                        <li><a href="#about" data-i18n="nav.tentang">Tentang Kami</a></li>
+                        <li><a href="#services" data-i18n="nav.layanan">Layanan</a></li>
+                        <li><a href="#products" data-i18n="nav.produk">Produk</a></li>
+                        <li><a href="#contact" data-i18n="nav.kontak">Kontak</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Info -->
+                <div class="footer-info">
+                    <h3 data-i18n="footer.contactTitle">Kontak</h3>
+                    <div class="footer-contact-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <span data-i18n="footer.phone">021-38820017</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span>0813 8080 810</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <a href="mailto:info@geberindo.com">info@geberindo.com</a>
+                    </div>
+                     <div class="footer-contact-item">
+                        <i class="fa-solid fa-clock"></i>
+                        <span data-i18n="footer.hours">Senin - Jumat: 08.00-17.00 WIB</span>
+                    </div>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2025 PT Geberindo Antar Sukses. All Rights Reserved.</p>
-            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 PT Geberindo Antar Sukses. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -102,6 +124,16 @@
 
     <script src="js/spa.js"></script>
     <script src="js/main.js"></script>
+
+    <!-- Product Modal -->
+    <div id="product-modal" class="modal-container">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <img src="" alt="Product Image" class="modal-img">
+            <h3 class="modal-title"></h3>
+            <p class="modal-desc"></p>
+        </div>
+    </div>
 </body>
 </html>
 </body>

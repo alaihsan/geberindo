@@ -2,6 +2,52 @@
 
 let currentLang = 'id';
 
+// --- MODAL LOGIC ---
+window.openProductModal = function(category, productId) {
+    // Assumes productsData is globally available from spa.js
+    if (typeof productsData === 'undefined') return;
+
+    const product = productsData[category]?.find(p => p.id === productId);
+    if (!product) return;
+
+    const modal = document.getElementById('product-modal');
+    if (!modal) return;
+
+    const modalImg = modal.querySelector('.modal-img');
+    const modalTitle = modal.querySelector('.modal-title');
+    const modalDesc = modal.querySelector('.modal-desc');
+
+    modalImg.src = product.img;
+    modalImg.alt = product.alt_id;
+    
+    // Get translated title
+    const titleKey = product.name_i18n;
+    modalTitle.textContent = (translations[currentLang] && translations[currentLang][titleKey]) ? translations[currentLang][titleKey] : product.alt_id;
+
+    modalDesc.textContent = (currentLang === 'id' ? product.desc_id : product.desc_en);
+
+    modal.classList.add('visible');
+};
+
+function setupModal() {
+    const modal = document.getElementById('product-modal');
+    if (!modal) return;
+
+    const closeBtn = modal.querySelector('.modal-close');
+
+    closeBtn.onclick = function() {
+        modal.classList.remove('visible');
+    }
+
+    // Close modal when clicking on the background
+    modal.onclick = function(event) {
+        if (event.target === modal) {
+            modal.classList.remove('visible');
+        }
+    }
+}
+
+
 document.addEventListener('DOMContentLoaded', function() {
 
     // Sets up the mobile menu functionality
@@ -74,6 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize
     setupMenu();
     setupScrollAnimations();
+    setupModal();
 });
 
 /* --- I18N TRANSLATIONS --- */
@@ -269,7 +316,7 @@ function applyTranslations(lang){
         const key = el.getAttribute('data-i18n');
         const text = translations[lang] && translations[lang][key];
         if (text) {
-            if ((el.tagName.toLowerCase() === 'h1' || el.tagName.toLowerCase() === 'p') && text.includes('<')) {
+            if ((el.tagName.toLowerCase() === 'h1' || el.tagName.toLowerCase() === 'p' || el.tagName.toLowerCase() === 'span') && text.includes('<')) {
                 el.innerHTML = text;
             } else {
                 el.textContent = text.replace(/\\n/g, '\n');
@@ -323,7 +370,7 @@ function setupFloatingButtons(){
         wa.className = 'floating-btn whatsapp';
         wa.title = 'Chat WhatsApp';
         wa.innerHTML = '<i class="fa-brands fa-whatsapp"></i>';
-        wa.addEventListener('click', ()=>{
+        wa.addEventListener('click', ()=>{ 
             const phone = '6281380808810';
             window.open(`https://wa.me/${phone}`, '_blank');
         });

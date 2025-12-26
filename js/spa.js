@@ -1,5 +1,74 @@
 /* SPA Content and Router */
 
+window.productsData = {
+    safety: [
+        { id: 'saf-01', name_i18n: 'page.products.cat1Item1', img: 'images/logo.png', alt_id: 'Helm Keselamatan', desc_id: 'Helm keselamatan berkualitas tinggi yang dirancang untuk perlindungan maksimal di lingkungan kerja. Material kuat, tahan benturan, dengan suspensi yang nyaman.', desc_en: 'High-quality safety helmet designed for maximum protection in the work environment. Strong, impact-resistant material with a comfortable suspension.' },
+        { id: 'saf-02', name_i18n: 'page.products.cat1Item2', img: 'images/logo.png', alt_id: 'Rompi Pengaman', desc_id: 'Rompi dengan visibilitas tinggi, dilengkapi dengan strip reflektif untuk keamanan kerja di malam hari atau kondisi minim cahaya.', desc_en: 'High-visibility vest equipped with reflective strips for work safety at night or in low-light conditions.' },
+        { id: 'saf-03', name_i18n: 'page.products.cat1Item3', img: 'images/logo.png', alt_id: 'Sarung Tangan', desc_id: 'Sarung tangan pelindung multi-fungsi, memberikan cengkeraman kuat dan proteksi terhadap goresan dan bahan kimia ringan.', desc_en: 'Multi-functional protective gloves, providing a strong grip and protection against scratches and light chemicals.' },
+        { id: 'saf-04', name_i18n: 'page.products.cat1Item4', img: 'images/logo.png', alt_id: 'Sepatu Kerja', desc_id: 'Sepatu kerja dengan ujung baja dan sol anti-slip, memberikan perlindungan dan kenyamanan sepanjang hari kerja.', desc_en: 'Work shoes with steel toes and anti-slip soles, providing protection and comfort throughout the workday.' }
+    ],
+    agriculture: [
+        { id: 'agr-01', name_i18n: 'page.products.cat2Item1', img: 'images/logo.png', alt_id: 'Bibit Berkualitas', desc_id: 'Bibit tanaman unggul yang telah melalui proses seleksi ketat untuk menjamin hasil panen yang optimal dan berkualitas.', desc_en: 'Superior plant seeds that have undergone a rigorous selection process to ensure optimal and high-quality yields.' },
+        { id: 'agr-02', name_i18n: 'page.products.cat2Item2', img: 'images/logo.png', alt_id: 'Pupuk Organik', desc_id: 'Pupuk organik murni yang menyuburkan tanah dan menutrisi tanaman secara alami, ramah lingkungan dan berkelanjutan.', desc_en: 'Pure organic fertilizer that naturally enriches the soil and nourishes plants, environmentally friendly and sustainable.' },
+        { id: 'agr-03', name_i18n: 'page.products.cat2Item3', img: 'images/logo.png', alt_id: 'Pestisida', desc_id: 'Pestisida efektif untuk mengendalikan hama dan penyakit tanaman, dengan formula yang aman bagi lingkungan jika digunakan sesuai anjuran.', desc_en: 'Effective pesticide for controlling plant pests and diseases, with an environmentally safe formula when used as directed.' },
+        { id: 'agr-04', name_i18n: 'page.products.cat2Item4', img: 'images/logo.png', alt_id: 'Peralatan Mesin', desc_id: 'Berbagai macam peralatan mesin pertanian modern untuk meningkatkan efisiensi dan kecepatan dalam proses pengolahan lahan.', desc_en: 'A wide range of agricultural machinery to increase efficiency and speed in land processing.' }
+    ],
+    industrial: [
+        { id: 'ind-01', name_i18n: 'page.products.cat3Item1', img: 'images/logo.png', alt_id: 'Pompa Industri', desc_id: 'Pompa industri heavy-duty dengan daya tahan tinggi, cocok untuk berbagai kebutuhan transfer cairan di lingkungan pabrik.', desc_en: 'Heavy-duty industrial pump with high durability, suitable for various fluid transfer needs in a factory environment.' },
+        { id: 'ind-02', name_i18n: 'page.products.cat3Item2', img: 'images/logo.png', alt_id: 'Motor Listrik', desc_id: 'Motor listrik efisiensi tinggi yang memberikan tenaga handal untuk berbagai aplikasi mesin industri.', desc_en: 'High-efficiency electric motor that provides reliable power for various industrial machine applications.' },
+        { id: 'ind-03', name_i18n: 'page.products.cat3Item3', img: 'images/logo.png', alt_id: 'Pipa & Fitting', desc_id: 'Sistem perpipaan dan fitting lengkap dengan material berkualitas, tahan korosi, dan tekanan tinggi.', desc_en: 'Complete piping and fitting system with quality materials, resistant to corrosion and high pressure.' },
+        { id: 'ind-04', name_i18n: 'page.products.cat3Item4', img: 'images/logo.png', alt_id: 'Sistem Otomasi', desc_id: 'Solusi sistem otomasi industri untuk meningkatkan produktivitas, presisi, dan mengurangi biaya operasional.', desc_en: 'Industrial automation system solutions to increase productivity, precision, and reduce operational costs.' }
+    ]
+};
+
+function generateProductCards(category) {
+    return productsData[category].map(product => `
+        <div class="product-card" data-product-id="${product.id}" data-category="${category}">
+            <img src="${product.img}" alt="${product.alt_id}">
+            <div class="product-card-content">
+                <h4 data-i18n="${product.name_i18n}">${product.alt_id}</h4>
+            </div>
+        </div>
+    `).join('');
+}
+
+function generateProductPage() {
+    return `
+        <section id="products-page" class="section-padding">
+            <div class="container">
+                <div class="text-center" style="margin-bottom: 50px;">
+                    <h2 class="section-title" data-i18n="page.products.title">Produk Kami</h2>
+                    <p data-i18n="page.products.intro">Koleksi produk berkualitas tinggi untuk memenuhi kebutuhan industri Anda.</p>
+                </div>
+
+                <!-- Safety Equipment -->
+                <div class="text-center" style="margin-bottom: 30px;">
+                     <h3 class="product-category-title" data-i18n="page.products.cat1">Safety Equipment</h3>
+                </div>
+                <div class="products-grid">
+                    ${generateProductCards('safety')}
+                </div>
+
+                <!-- Agricultural Tools -->
+                <div class="text-center" style="margin-bottom: 30px;">
+                    <h3 class="product-category-title" data-i18n="page.products.cat2">Alat Pertanian</h3>
+                </div>
+                <div class="products-grid">
+                    ${generateProductCards('agriculture')}
+                </div>
+
+                <!-- Industrial Equipment -->
+                <div class="text-center" style="margin-bottom: 30px;">
+                    <h3 class="product-category-title" data-i18n="page.products.cat3">Peralatan Industri</h3>
+                </div>
+                <div class="products-grid">
+                    ${generateProductCards('industrial')}
+                </div>
+            </div>
+        </section>
+    `;
+}
+
 const pages = {
     home: `
         <section id="hero">
@@ -93,60 +162,7 @@ const pages = {
             </div>
         </section>
     `,
-    products: `
-        <section id="products-page" class="section-padding">
-            <div class="container">
-                <div class="text-center" style="margin-bottom: 50px;">
-                    <h2 class="section-title" data-i18n="page.products.title">Produk Kami</h2>
-                    <p data-i18n="page.products.intro">Koleksi produk berkualitas tinggi untuk memenuhi kebutuhan industri Anda.</p>
-                </div>
-                <div class="service-container">
-                    <div class="service-box">
-                        <div class="service-header">
-                            <i class="fa-solid fa-hard-hat"></i>
-                            <h3 data-i18n="page.products.cat1">Safety Equipment</h3>
-                        </div>
-                        <div class="service-body">
-                            <ul>
-                                <li data-i18n="page.products.cat1Item1">Helm Keselamatan</li>
-                                <li data-i18n="page.products.cat1Item2">Rompi Pengaman</li>
-                                <li data-i18n="page.products.cat1Item3">Sarung Tangan</li>
-                                <li data-i18n="page.products.cat1Item4">Sepatu Kerja</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="service-box">
-                        <div class="service-header">
-                            <i class="fa-solid fa-tractor"></i>
-                            <h3 data-i18n="page.products.cat2">Alat Pertanian</h3>
-                        </div>
-                        <div class="service-body">
-                            <ul>
-                                <li data-i18n="page.products.cat2Item1">Bibit Berkualitas</li>
-                                <li data-i18n="page.products.cat2Item2">Pupuk Organik</li>
-                                <li data-i18n="page.products.cat2Item3">Pestisida</li>
-                                <li data-i18n="page.products.cat2Item4">Peralatan Mesin</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="service-box">
-                        <div class="service-header">
-                            <i class="fa-solid fa-wrench"></i>
-                            <h3 data-i18n="page.products.cat3">Peralatan Industri</h3>
-                        </div>
-                        <div class="service-body">
-                            <ul>
-                                <li data-i18n="page.products.cat3Item1">Pompa Industri</li>
-                                <li data-i18n="page.products.cat3Item2">Motor Listrik</li>
-                                <li data-i18n="page.products.cat3Item3">Pipa &amp; Fitting</li>
-                                <li data-i18n="page.products.cat3Item4">Sistem Otomasi</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    `,
+    products: generateProductPage(),
     clients: `
         <section id="clients" class="section-padding">
             <div class="container">
@@ -196,10 +212,10 @@ const pages = {
                         <h3 data-i18n="page.contact.contactInfo">Informasi Kontak</h3>
                         <div class="contact-item">
                             <i class="fa-solid fa-map-pin"></i>
-                            <p>
-                                <strong data-i18n="page.contact.address">Alamat</strong><br>
-                                <span data-i18n="footer.address">Gedung Menara 165, Lantai 17 Unit A<br>Jl. TB Simatupang Kav-1, Jakarta Selatan 12560</span>
-                            </p>
+                            <div>
+                                <strong data-i18n="page.contact.address">Alamat</strong>
+                                <p data-i18n="footer.address">Gedung Menara 165, Lantai 17 Unit A<br>Jl. TB Simatupang Kav-1, Jakarta Selatan 12560</p>
+                            </div>
                         </div>
                         <div class="contact-item">
                             <i class="fa-solid fa-phone"></i>
@@ -307,6 +323,20 @@ function renderPage(pageName) {
                         }, 800);
                     });
                 }
+            }
+
+            // Add product card listener if on product page
+            if (pageName === 'products') {
+                const productCards = document.querySelectorAll('.product-card');
+                productCards.forEach(card => {
+                    card.addEventListener('click', () => {
+                        const productId = card.dataset.productId;
+                        const category = card.dataset.category;
+                        if(typeof window.openProductModal === 'function') {
+                            window.openProductModal(category, productId);
+                        }
+                    });
+                });
             }
 
             // 3. Remove fade-out to trigger fade-in animation
