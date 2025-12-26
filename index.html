@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT Geberindo Antar Sukses | Your Reliable Partner</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-green: #2E7D32; /* Hijau Segar - Perkebunan */
+            --accent-orange: #FF6F00; /* Oranye Semangat - Safety */
+            --dark-text: #333333;
+            --light-bg: #f4f9f4;
+            --white: #ffffff;
+            --shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--dark-text);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+
+        /* --- UTILITIES --- */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .text-center { text-align: center; }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-green);
+            color: var(--white);
+            border: 2px solid var(--primary-green);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--white);
+            color: var(--primary-green);
+        }
+
+        .btn-secondary {
+            background-color: var(--white);
+            color: var(--accent-orange);
+            border: 2px solid var(--accent-orange);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--accent-orange);
+            color: var(--white);
+        }
+
+        h2.section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-green);
+            position: relative;
+            display: inline-block;
+        }
+
+        h2.section-title::after {
+            content: '';
+            display: block;
+            width: 50%;
+            height: 4px;
+            background: var(--accent-orange);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- HEADER & NAV --- */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span { color: var(--accent-orange); }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+
+        /* Mobile Menu */
+        .hamburger { display: none; cursor: pointer; font-size: 1.5rem; }
+
+        /* --- HERO SECTION --- */
+        #hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- ABOUT & VISION --- */
+        #about { background-color: var(--white); }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text p { margin-bottom: 20px; text-align: justify;}
+
+        .vision-mission-cards {
+            display: grid;
+            gap: 20px;
+        }
+
+        .vm-card {
+            background: var(--light-bg);
+            padding: 20px;
+            border-left: 5px solid var(--accent-orange);
+            border-radius: 0 10px 10px 0;
+        }
+
+        .vm-card h3 { color: var(--primary-green); margin-bottom: 10px; }
+
+        /* --- VALUES SECTION --- */
+        #values { background-color: var(--light-bg); }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .value-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .value-card:hover { transform: translateY(-10px); }
+
+        .value-card i {
+            font-size: 3rem;
+            color: var(--accent-orange);
+            margin-bottom: 20px;
+        }
+
+        .value-card h3 { margin-bottom: 10px; color: var(--primary-green); }
+
+        /* --- SERVICES & PRODUCTS --- */
+        #services { background-color: var(--white); }
+
+        .service-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .service-box {
+            flex-basis: 300px;
+            background: var(--white);
+            border: 1px solid #eee;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .service-header {
+            background: var(--primary-green);
+            color: var(--white);
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .service-header i { font-size: 2rem; margin-bottom: 10px; display: block;}
+
+        .service-body { padding: 20px; }
+        .service-body ul { list-style: none; padding-left: 0; }
+        .service-body li { 
+            margin-bottom: 10px; 
+            padding-left: 20px; 
+            position: relative; 
+        }
+        .service-body li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--accent-orange);
+        }
+
+        /* --- STATS / PROJECTS --- */
+        #projects {
+            background: var(--primary-green);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .project-text { max-width: 800px; margin: 0 auto; }
+        .project-list {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        .project-item {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #1a1a1a;
+            color: #ddd;
+            padding: 50px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-info h3 { color: var(--white); margin-bottom: 20px; }
+        .footer-info p { margin-bottom: 10px; display: flex; gap: 10px; }
+        .footer-info i { color: var(--accent-orange); margin-top: 5px; }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Hide for now, JS will handle toggle */
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                padding: 20px;
+                box-shadow: var(--shadow);
+            }
+            .nav-links.active { display: flex; }
+            .hamburger { display: block; }
+            .hero-content h1 { font-size: 2rem; }
+            .about-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fa-solid fa-leaf"></i>
+                    GEBERINDO <span>GAS</span>
+                </div>
+                <div class="hamburger" onclick="toggleMenu()">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#hero">Beranda</a></li>
+                    <li><a href="#about">Tentang Kami</a></li>
+                    <li><a href="#values">Nilai</a></li>
+                    <li><a href="#services">Layanan & Produk</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container hero-content">
+            <h1>Your Reliable Partner for <br><span style="color: var(--accent-orange);">Sustainable Business</span></h1>
+            <p>Mitra terpercaya dalam penyediaan barang dan jasa. Kami menghadirkan produk berkualitas serta layanan profesional untuk keberhasilan operasional Anda.</p>
+            <a href="#contact" class="btn btn-primary">Hubungi Kami</a>
+            <a href="#services" class="btn btn-secondary" style="margin-left: 10px;">Lihat Produk</a>
+        </div>
+    </section>
+
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <h2 class="section-title">Tentang Kami</h2>
+                    <p><strong>PT Geberindo Antar Sukses (GAS)</strong> merupakan perusahaan yang bergerak di bidang jasa dan perdagangan besar, dengan fokus pada penyediaan alat-alat perkebunan, peralatan keselamatan kerja (safety equipment), dan berbagai kebutuhan industri lainnya.</p>
+                    <p>Kami hadir untuk menjadi mitra strategis bagi perusahaan yang membutuhkan solusi pengadaan barang dan jasa yang cepat, efisien, dan terpercaya.</p>
+                </div>
+                <div class="vision-mission-cards">
+                    <div class="vm-card">
+                        <h3><i class="fa-solid fa-eye"></i> Visi</h3>
+                        <p>Menjadi perusahaan jasa dan perdagangan besar yang terpercaya, inovatif, berkelanjutan dan berdaya saing tinggi di tingkat nasional maupun internasional.</p>
+                    </div>
+                    <div class="vm-card">
+                        <h3><i class="fa-solid fa-bullseye"></i> Misi Utama</h3>
+                        <p>Memberikan layanan jasa dan produk perdagangan yang berkualitas, tepat waktu, dan sesuai kebutuhan pelanggan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="values" class="section-padding">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Nilai Perusahaan</h2>
+                <p>Prinsip yang kami pegang teguh dalam setiap langkah[cite: 17].</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <i class="fa-solid fa-handshake"></i>
+                    <h3>Integritas</h3>
+                    <p>Menjaga kejujuran dan profesionalitas dalam setiap langkah.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fa-solid fa-thumbs-up"></i>
+                    <h3>Komitmen</h3>
+                    <p>Fokus pada hasil dan kepuasan pelanggan adalah prioritas kami.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fa-solid fa-users"></i>
+                    <h3>Kolaborasi</h3>
+                    <p>Bekerja sama dengan mitra dan pelanggan untuk hasil terbaik.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <h3>Inovasi</h3>
+                    <p>Terus beradaptasi dengan teknologi dan kebutuhan pasar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section-padding">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Layanan & Produk</h2>
+                <p>Kami menghadirkan solusi terpadu untuk kebutuhan industri Anda.</p>
+            </div>
+
+            <div class="service-container">
+                <div class="service-box">
+                    <div class="service-header">
+                        <i class="fa-solid fa-helmet-safety"></i>
+                        <h3>Safety Equipment (APD)</h3>
+                    </div>
+                    <div class="service-body">
+                        <ul>
+                            <li>Helm Safety</li>
+                            <li>Sepatu Safety</li>
+                            <li>Sarung Tangan</li>
+                            <li>Kacamata Kerja</li>
+                            <li>Rompi Reflektif</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-box">
+                    <div class="service-header">
+                        <i class="fa-solid fa-tractor"></i>
+                        <h3>Alat Perkebunan</h3>
+                    </div>
+                    <div class="service-body">
+                        <ul>
+                            <li>Mesin Pemotong Rumput</li>
+                            <li>Sprayer</li>
+                            <li>Alat Panen</li>
+                            <li>Cangkul</li>
+                            <li>Alat Ukur Kelembapan Tanah</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-box">
+                    <div class="service-header">
+                        <i class="fa-solid fa-gears"></i>
+                        <h3>Perlengkapan Industri</h3>
+                    </div>
+                    <div class="service-body">
+                        <ul>
+                            <li>Peralatan Maintenance & Tool Set</li>
+                            <li>Sistem Proteksi Kebakaran</li>
+                            <li>Rambu & Tali Pengaman</li>
+                            <li>Aksesoris Kerja</li>
+                            <li>Konsultasi Pengadaan [cite: 32]</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section-padding">
+        <div class="container">
+            <h2 class="section-title" style="color: var(--white); border-color: var(--white);">Jangkauan Proyek</h2>
+            <p class="project-text">Kami telah melayani berbagai sektor industri perkebunan, pertanian, dan infrastruktur[cite: 58].</p>
+            
+            <div class="project-list">
+                <div class="project-item">
+                    <i class="fa-solid fa-building-shield" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                    <p>Pengadaan alat safety untuk proyek infrastruktur[cite: 61].</p>
+                </div>
+                <div class="project-item">
+                    <i class="fa-solid fa-map-location-dot" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                    <p>Distribusi alat perkebunan ke berbagai daerah di Sumatera dan Kalimantan[cite: 62, 63].</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-padding" style="background-color: var(--white);">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Hubungi Kami</h2>
+                <p>Siap menjadi mitra strategis Anda.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <h3>PT Geberindo Antar Sukses</h3>
+                    <p><i class="fa-solid fa-location-dot"></i> Gedung Menara 165, Lantai 17 Unit A<br>Jl. TB Simatupang Kav-1, Jakarta Selatan 12560</p>
+                </div>
+                <div class="footer-info">
+                    <h3>Kontak</h3>
+                    <p><i class="fa-solid fa-phone"></i> 021-38820017 / 0813 8080 810 (WA)</p>
+                    <p><i class="fa-solid fa-envelope"></i> info@geberindo.com</p>
+                    <p><i class="fa-solid fa-clock"></i> Senin - Jumat: 08.00-17.00 WIB</p>
+                </div>
+                <div class="footer-info">
+                    <h3>Tautan Cepat</h3>
+                    <p><a href="#about" style="color: #ddd; text-decoration: none;">Tentang Kami</a></p>
+                    <p><a href="#services" style="color: #ddd; text-decoration: none;">Produk & Layanan</a></p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 PT Geberindo Antar Sukses. All Rights Reserved. [cite: 70]</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle Mobile Menu
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        // Close menu when clicking a link (mobile UX)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                const navLinks = document.querySelector('.nav-links');
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+
+        // Simple Fade-In Animation on Scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Apply animation style initially
+        document.querySelectorAll('.value-card, .service-box, .about-text, .vm-card').forEach(el => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(20px)";
+            el.style.transition = "all 0.6s ease-out";
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
