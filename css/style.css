@@ -504,50 +504,63 @@ footer {
     .about-grid { grid-template-columns: 1fr; }
 }
 
-/* --- Mobile Bottom Navigation --- */
+/* --- Mobile Bottom Navigation (Instagram-like, always visible) --- */
 .mobile-bottom-nav {
     display: none;
 }
 
-/* style for the small screens */
+/* Tampil di layar kecil */
 @media (max-width: 768px) {
+    body { padding-bottom: 80px; }
     .mobile-bottom-nav {
         display: flex;
-        gap: 6px;
+        gap: 0;
         position: fixed;
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: 16px;
+        left: 0;
+        right: 0;
+        bottom: 0;
         background: rgba(255,255,255,0.98);
-        padding: 8px 12px;
-        border-radius: 999px;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        padding: 0;
+        border-radius: 0;
+        box-shadow: 0 -4px 16px rgba(0,0,0,0.08);
         z-index: 1200;
-        align-items: center;
+        align-items: stretch;
+        border-top: 1px solid #eee;
     }
     .mobile-bottom-nav .mbn-item {
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
         gap: 4px;
-        padding: 6px 10px;
-        color: #444;
+        padding: 8px 0;
+        flex: 1;
+        color: #666;
         text-decoration: none;
-        font-size: 12px;
-        min-width: 44px;
+        font-size: 11px;
+        transition: all 0.25s ease;
+        border-radius: 0;
+        min-width: unset;
     }
     .mobile-bottom-nav .mbn-item i {
-        font-size: 18px;
+        font-size: 20px;
+        color: var(--primary-green);
+    }
+    .mobile-bottom-nav .mbn-item:hover {
+        background: rgba(46,125,50,0.05);
+    }
+    .mobile-bottom-nav .mbn-item.active {
+        background: rgba(46,125,50,0.1);
         color: var(--primary-green);
     }
     .mobile-bottom-nav .mbn-item.mbn-center {
-        background: var(--primary-green);
-        color: #fff;
-        padding: 10px 12px;
-        border-radius: 999px;
-        transform: translateY(-6px);
+        transform: none;
+        background: transparent;
+        color: #666;
     }
-    .mobile-bottom-nav .mbn-item.mbn-center i { color: #fff; }
+    .mobile-bottom-nav .mbn-item.mbn-center i {
+        color: var(--primary-green);
+    }
 }
 
 /* Header scrolled */
@@ -560,18 +573,19 @@ footer {
 /* logo img inside header */
 .logo img { display: inline-block; vertical-align: middle; }
 
-/* Language switch */
+/* Language switch - top-right desktop, top-center mobile, tidak menimpa menu */
 .lang-switch { 
-    display:flex; gap:6px; align-items:center;
+    display:flex; gap:8px; align-items:center;
     position: absolute;
-    right: 20px;
+    right: 80px;
     top: 50%;
     transform: translateY(-50%);
+    z-index: 100;
 }
 .lang-btn {
     background: transparent;
-    border: 1px solid transparent;
-    padding: 6px 8px;
+    border: 1.5px solid var(--primary-green);
+    padding: 6px 10px;
     border-radius: 6px;
     cursor: pointer;
     font-weight: 600;
@@ -579,7 +593,9 @@ footer {
     font-size: 12px;
     transition: all 0.25s ease;
 }
-.lang-btn:hover { background: rgba(46,125,50,0.08); }
+.lang-btn:hover { 
+    background: rgba(46,125,50,0.08);
+}
 .lang-btn[data-active="true"], .lang-btn.active {
     background: var(--primary-green);
     color: #fff;
@@ -588,11 +604,17 @@ footer {
 
 @media (max-width: 768px) {
     .lang-switch { 
-        position: static;
-        transform: none;
-        gap: 4px;
+        position: absolute;
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        top: 50%;
+        gap: 6px;
     }
-    .lang-btn { padding: 5px 6px; font-size: 11px; }
+    .lang-btn { 
+        padding: 5px 8px; 
+        font-size: 11px;
+    }
 }
 
 /* Floating buttons (whatsapp & scroll-top) */
@@ -601,23 +623,59 @@ footer {
 .floating-btn.whatsapp { background: linear-gradient(135deg,#25D366,#128C7E); color:#fff; }
 .floating-btn.scroll-top { background: #fff; color: var(--primary-green); }
 
-/* Preloader */
+/* Preloader dengan transisi elegan */
 .preloader {
     position: fixed;
     inset: 0;
-    background: rgba(255,255,255,0.98);
+    background: linear-gradient(135deg, rgba(46,125,50,0.95), rgba(102,187,106,0.95));
     display:flex;
     align-items:center;
     justify-content:center;
-    z-index:2000;
-    transition: opacity 0.5s ease, visibility 0.5s;
+    z-index:3000;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1), visibility 0.6s;
 }
-.preloader.hidden { opacity:0; visibility:hidden; }
-.preloader .spinner { width:64px; height:64px; border-radius:12px; display:flex; align-items:center; justify-content:center; background: linear-gradient(135deg,var(--primary-green),var(--accent-green)); color:#fff; font-weight:700; box-shadow: var(--shadow); }
+.preloader.hidden { 
+    opacity: 0; 
+    visibility: hidden; 
+}
+.preloader .spinner { 
+    width: 80px; 
+    height: 80px; 
+    border-radius: 16px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    background: rgba(255,255,255,0.15);
+    color: #fff; 
+    font-weight: 700;
+    font-size: 32px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+    animation: spinnerBounce 1.5s ease-in-out infinite;
+}
 
-/* Initial page fade */
-body:not(.page-visible) { opacity:0; transform: translateY(6px); transition: opacity 0.6s ease, transform 0.6s ease; }
-body.page-visible { opacity:1; transform: translateY(0); }
+@keyframes spinnerBounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Page transition fade */
+#app-content {
+    animation: pageEnter 0.4s ease-out;
+}
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 /* Active / hover nav styles */
 .nav-links a { transition: color 0.25s ease, background 0.25s ease, border-radius 6px; padding:6px 8px; }
@@ -626,7 +684,7 @@ body.page-visible { opacity:1; transform: translateY(0); }
 
 /* Mobile: make header compact */
 @media (max-width: 480px) {
-    nav { height:64px; flex-wrap:wrap; }
+    nav { height:64px; flex-wrap:wrap; position: relative; }
     .logo img { width:40px; height:40px; }
     .logo { gap: 8px; }
     .hamburger { display: none !important; }

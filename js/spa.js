@@ -239,14 +239,18 @@ const pages = {
 };
 
 function renderPage(pageName) {
-    const appContent = document.getElementById('app-content');
-    const content = pages[pageName] || pages['home'];
-    appContent.innerHTML = content;
+    const preloader = document.getElementById('preloader');
+    preloader.style.display = 'flex';
+    
     setTimeout(() => {
+        const appContent = document.getElementById('app-content');
+        const content = pages[pageName] || pages['home'];
+        appContent.innerHTML = content;
         applyTranslations(currentLang);
-    }, 50);
-    window.scrollTo(0, 0);
-    closeMenu();
+        preloader.style.display = 'none';
+        window.scrollTo(0, 0);
+        closeMenu();
+    }, 300);
 }
 
 function router() {
